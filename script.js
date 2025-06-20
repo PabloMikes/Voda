@@ -24,7 +24,7 @@ const summaryDiv = document.getElementById("summary");
 const statusDiv = document.getElementById("status");
 
 const weekLabels = [];
-const ALLOWED_ORIGIN = "https://pablomikes.github.io/Voda/"; // Nahraď svou doménou (např. "https://tvojedomena.com")
+const ALLOWED_ORIGIN = "https://pablomikes.github.io"; // Nahraď svou doménou (např. "https://tvojedomena.com")
 //https://pablomikes.github.io/Voda/
 // Autentizace při načtení stránky
 signInAnonymously(auth)
