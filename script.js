@@ -89,7 +89,7 @@ function getWeekNumberFromLabel(label) {
 async function saveData() {
   const origin = window.location.origin;
   if (origin !== ALLOWED_ORIGIN) {
-    statusDiv.textContent = "Přístup povolen pouze z: " + ALLOWED_ORIGIN;
+    statusDiv.textContent = "Přístup povolen pouze z: " + ALLOWED_ORIGIN + "nyní jste na: " + origin;
     alert("Přístup zamítnut – neplatná doména!");
     return;
   }
@@ -134,7 +134,7 @@ async function saveData() {
 async function showSummary() {
   const origin = window.location.origin;
   if (origin !== ALLOWED_ORIGIN) {
-    statusDiv.textContent = "Přístup povolen pouze z: " + ALLOWED_ORIGIN;
+    statusDiv.textContent = "Přístup povolen pouze z: " + ALLOWED_ORIGIN + "nyní jste na: " + origin;
     alert("Přístup zamítnut – neplatná doména!");
     return;
   }
