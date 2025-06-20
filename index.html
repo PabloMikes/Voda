@@ -3,32 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dostupnost týdnů - Firebase</title>
-  <style>
-    body { font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; }
-    .week-row { margin-bottom: 8px; }
-    .green { background-color: #d4edda; padding: 5px; border-radius: 4px; }
-    .red { background-color: #f8d7da; padding: 5px; border-radius: 4px; }
-    label { cursor: pointer; }
-    #summary { margin-top: 20px; }
-    input[type="text"] { padding: 5px; width: 100%; box-sizing: border-box; margin-bottom: 10px; }
-    button { padding: 10px 15px; margin-right: 10px; }
-  </style>
+  <title>Dostupnost týdnů - Water & Booze</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-
-  <h1>Dostupnost týdnů</h1>
-  <p>Zadej své jméno a označ, kdy máš volno:</p>
+  <h1>Dostupnost týdnů - Water & Booze</h1>
+  <p>Zadej své jméno a označ, kdy máš volno (s chlastem u vody!):</p>
   <input type="text" id="username" placeholder="Tvé jméno" />
-
   <div id="weeks"></div>
-
   <button id="saveBtn">Uložit dostupnost</button>
   <button id="summaryBtn">Ukázat souhrn dostupnosti</button>
-
   <div id="summary"></div>
 
-  <!-- Firebase SDK (modular) -->
-<script type="module" src="./script.js"></script>
+  <script type="module" src="./script.js"></script>
 </body>
 </html>

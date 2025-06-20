@@ -1,0 +1,162 @@
+/* Obecné styly */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #0a2a43 0%, #1e90ff 50%, #4682b4 100%); /* Hluboká modrá voda */
+  background-size: cover;
+  animation: waterWave 8s infinite alternate;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+@keyframes waterWave {
+  from { background-position: 0 0; }
+  to { background-position: 100% 0; }
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #d4a017; /* Zlatá jako whisky */
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 1rem;
+}
+
+p {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #f0e68c; /* Světle žlutá jako bubliny šampaňského */
+  margin-bottom: 1.5rem;
+}
+
+.week-row {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: rgba(255, 215, 0, 0.1); /* Průsvitná zlatá vrstva */
+  border-radius: 10px;
+  border: 1px solid #d4a017; /* Zlatý okraj */
+  transition: transform 0.3s, background 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.week-row:hover {
+  transform: scale(1.05); /* Lehký zvětšení */
+  background: rgba(139, 69, 19, 0.3); /* Hnědá jako rum */
+}
+
+.green { background-color: #2ecc71; padding: 0.5rem; border-radius: 4px; }
+.red { background-color: #e74c3c; padding: 0.5rem; border-radius: 4px; }
+label { cursor: pointer; color: #fff; margin-left: 0.5rem; }
+input[type="checkbox"] {
+  accent-color: #d4a017; /* Zlatý akcent */
+  transform: scale(1.5);
+  margin: 0;
+}
+input[type="text"] {
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 1.5rem;
+  border: 2px solid #d4a017; /* Zlatý okraj */
+  border-radius: 5px;
+  background: rgba(255, 215, 0, 0.2); /* Lehce zlaté pozadí */
+  color: #fff;
+  font-size: 1rem;
+}
+input[type="text"]:focus {
+  outline: none;
+  border-color: #8b4513; /* Tmavší hnědá */
+  box-shadow: 0 0 8px #8b4513;
+}
+button {
+  padding: 1rem 1.5rem;
+  margin-right: 1rem;
+  background: #8b4513; /* Tmavý rum */
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 1rem;
+}
+button:hover {
+  background: #d4a017; /* Zlatý přechod */
+  transform: translateY(-2px);
+}
+#summary {
+  margin-top: 1.5rem;
+  background: rgba(30, 144, 255, 0.4); /* Vodní odstín */
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #d4a017; /* Zlatý okraj */
+}
+
+/* Media Queries pro responzivitu */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+  .week-row {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+  input[type="text"] {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+  button {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+  }
+  #summary {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 400px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  p {
+    font-size: 0.9rem;
+  }
+  .week-row {
+    padding: 0.6rem;
+    font-size: 0.8rem;
+  }
+  input[type="text"] {
+    padding: 0.6rem;
+    font-size: 0.8rem;
+  }
+  button {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+    margin-right: 0.3rem;
+  }
+  #summary {
+    padding: 0.6rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Flexbox pro tlačítka */
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
