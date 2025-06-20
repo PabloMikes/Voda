@@ -45,7 +45,7 @@ p {
 }
 
 .week-row:hover {
-  transform: scale(1.05); /* Lehký zvětšení */
+  transform: scale(0.95); /* Lehký zvětšení */
   background: rgba(139, 69, 19, 0.3); /* Hnědá jako rum */
 }
 
@@ -88,7 +88,6 @@ button {
 }
 button:hover {
   background: #d4a017; /* Zlatý přechod */
-  transform: translateY(2px);
 }
 #summary {
   margin-top: 1.5rem;
