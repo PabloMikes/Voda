@@ -1,6 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
+// Konfigurace Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyA_3vceMVF-XsHl95_GH2at4D0HBsAErTQ",
   authDomain: "epickavoda.firebaseapp.com",
@@ -13,13 +15,28 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 const db = getDatabase(app);
 
 const endDate = new Date("2025-08-31");
 const weeksDiv = document.getElementById("weeks");
 const summaryDiv = document.getElementById("summary");
+const statusDiv = document.getElementById("status");
 
 const weekLabels = [];
+const ALLOWED_ORIGIN = "https://pablomikes.github.io/Voda/"; // Nahraď svou doménou (např. "https://tvojedomena.com")
+//https://pablomikes.github.io/Voda/
+// Autentizace při načtení stránky
+signInAnonymously(auth)
+  .then((userCredential) => {
+    const user = userCredential.user;
+    statusDiv.textContent = `Přihlášen jako: ${user.uid}`;
+    console.log("Anonymní přihlášení úspěšné, UID:", user.uid);
+  })
+  .catch((error) => {
+    statusDiv.textContent = "Chyba při přihlašování: " + error.message;
+    console.error("Chyba při autentizaci:", error);
+  });
 
 function getWeekNumber(d) {
   d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
@@ -47,6 +64,14 @@ function generateWeeks() {
     div.innerHTML = `<label><input type="checkbox" id="week-${week}"> ${label}</label>`;
     weeksDiv.appendChild(div);
 
+    // Kliknutí na celý řádek
+    const checkbox = div.querySelector(`#week-${week}`);
+    div.addEventListener("click", (e) => {
+      if (e.target.tagName !== "INPUT") {
+        checkbox.checked = !checkbox.checked;
+      }
+    });
+
     current.setDate(current.getDate() + 7);
   }
   console.log("Vygenerované týdny:", weekLabels);
@@ -62,6 +87,20 @@ function getWeekNumberFromLabel(label) {
 }
 
 async function saveData() {
+  const origin = window.location.origin;
+  if (origin !== ALLOWED_ORIGIN) {
+    statusDiv.textContent = "Přístup povolen pouze z: " + ALLOWED_ORIGIN;
+    alert("Přístup zamítnut – neplatná doména!");
+    return;
+  }
+
+  const user = auth.currentUser;
+  if (!user) {
+    statusDiv.textContent = "Přístup zamítnut – neprovedena autentizace!";
+    alert("Nejprve se přihlas!");
+    return;
+  }
+
   const name = document.getElementById("username").value.trim();
   console.log("Zadané jméno:", name);
   if (!name) {
@@ -93,6 +132,20 @@ async function saveData() {
 }
 
 async function showSummary() {
+  const origin = window.location.origin;
+  if (origin !== ALLOWED_ORIGIN) {
+    statusDiv.textContent = "Přístup povolen pouze z: " + ALLOWED_ORIGIN;
+    alert("Přístup zamítnut – neplatná doména!");
+    return;
+  }
+
+  const user = auth.currentUser;
+  if (!user) {
+    statusDiv.textContent = "Přístup zamítnut – neprovedena autentizace!";
+    alert("Nejprve se přihlas!");
+    return;
+  }
+
   try {
     const snapshot = await get(child(ref(db), 'users'));
     const users = snapshot.exists() ? snapshot.val() : {};
@@ -109,7 +162,7 @@ async function showSummary() {
       }
     }
 
-    let maxAvailable = 0; // Pro nalezení týdne s nejvíce dostupnými
+    let maxAvailable = 0;
     for (let user in users) {
       const weeks = users[user];
       for (let key in weeks) {
@@ -129,11 +182,11 @@ async function showSummary() {
       const weekNo = getWeekNumberFromLabel(label);
       if (weekNo) {
         const info = weekAvailability[weekNo] || { total: 0, available: 0 };
-        let colorClass = "red"; // Výchozí barva (červená)
+        let colorClass = "red";
         if (info.total > 0 && info.available === info.total) {
-          colorClass = "green"; // Zelená, pokud jsou všichni dostupní
+          colorClass = "green";
         } else if (info.available === maxAvailable && info.available > 0) {
-          colorClass = "orange"; // Oranžová, pokud je to týden s nejvíce dostupnými
+          colorClass = "orange";
         }
 
         const div = document.createElement("div");

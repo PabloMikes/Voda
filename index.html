@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html lang="cs">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dostupnost týdnů - Water & Booze</title>
-  <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-  <h1>Dostupnost týdnů - Water & Booze😎</h1>
-  <h1>🥵Plán:🔥</h1>
-  <p>Jít na vodu. Chlastat. Dělat píčoviny. Přežít(optional). Spát v kempu. 3 denní akce. 👍</p>
-  <p>✨Zadej své jméno a označ, kdy máš volno (s chlastem u vody!):✨</p>
-  <input type="text" id="username" placeholder="Tvé jméno" />
-  <div id="weeks"></div>
-  <button id="saveBtn">Uložit dostupnost</button>
-  <button id="summaryBtn">Ukázat souhrn dostupnosti</button>
-  <div id="summary"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dostupnost týdnů - Water & Booze</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h1>Dostupnost týdnů - Water & Booze😎</h1>
+    <h1>🥵Plán:🔥</h1>
+    <p>
+      Jít na vodu. Chlastat. Dělat píčoviny. Přežít(optional). Spát v kempu. 3
+      denní akce. 👍
+    </p>
+    <p>✨Zadej své jméno a označ, kdy máš volno (s chlastem u vody!):✨</p>
+    <input type="text" id="username" placeholder="Tvé jméno" />
+    <div id="weeks"></div>
+    <button id="saveBtn">Uložit dostupnost</button>
+    <button id="summaryBtn">Ukázat souhrn dostupnosti</button>
+    <div id="summary"></div>
+    <div id="status"></div>
+    <!-- Pro zobrazení stavu autentizace -->
 
-  <script type="module" src="./script.js"></script>
-</body>
+    <!-- Firebase SDK včetně Authentication -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js"></script>
+    <script type="module" src="./script.js"></script>
+  </body>
 </html>
