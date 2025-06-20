@@ -51,6 +51,7 @@ p {
 
 .green { background-color: #2ecc71; padding: 0.5rem; border-radius: 4px; }
 .red { background-color: #e74c3c; padding: 0.5rem; border-radius: 4px; }
+.orange { background-color: #f4a261; padding: 0.5rem; border-radius: 4px; } /* Oranžová barva */
 label { cursor: pointer; color: #fff; margin-left: 0.5rem; }
 input[type="checkbox"] {
   accent-color: #d4a017; /* Zlatý akcent */
@@ -87,7 +88,7 @@ button {
 }
 button:hover {
   background: #d4a017; /* Zlatý přechod */
-  transform: translateY(-2px);
+  transform: translateY(2px);
 }
 #summary {
   margin-top: 1.5rem;
